@@ -1,7 +1,7 @@
 services:
   api:
     container_name: student-blogg-api
-    image: gloxie/complete-docker-compose-build-api
+    image: gloxie/arbeidskrav-api
     ports:
       - "8080:8080"
     depends_on:
@@ -13,7 +13,7 @@ services:
     
   database:
     container_name: student-blogg-db
-    image: gloxie/complete-docker-compose-build-db
+    image: gloxie/arbeidskrav-database
     ports:
       - "3366:3306"
     volumes:
