@@ -1,0 +1,29 @@
+services:
+  api:
+    container_name: student-blogg-api
+    image: gloxie/complete-docker-compose-build-api
+    ports:
+      - "8080:8080"
+    depends_on:
+      - database
+    networks:
+      - student-blogg-nett
+    environment:
+      - ConnectionStrings__DefaultConnection=Server=student-blogg-db;Database=ga_emne7_avansert;User ID=ga-app;Password=ga-5ecret-%;
+    
+  database:
+    container_name: student-blogg-db
+    image: gloxie/complete-docker-compose-build-db
+    ports:
+      - "3366:3306"
+    volumes:
+      - student-blogg-volume:/var/lib/mysql
+    networks:
+      - student-blogg-nett
+
+networks:
+  student-blogg-nett:
+    driver: bridge
+
+volumes:
+  student-blogg-volume:
